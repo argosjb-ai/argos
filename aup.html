@@ -1,69 +1,191 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Acceptable Use Policy — Argos</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Argos — Acceptable Use Policy</title>
   <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-           max-width: 720px; margin: 40px auto; padding: 0 24px;
-           color: #1a1a1a; line-height: 1.7; }
-    h1 { font-size: 1.8rem; margin-bottom: 4px; }
-    h2 { font-size: 1.1rem; margin-top: 2rem; color: #333; }
-    h3 { font-size: 0.95rem; margin-top: 1.5rem; color: #555; }
-    .meta { color: #666; font-size: 0.9rem; margin-bottom: 2rem; }
-    hr { border: none; border-top: 1px solid #e0e0e0; margin: 2rem 0; }
-    footer { color: #999; font-size: 0.8rem; margin-top: 3rem; }
-    a { color: #5c4de8; }
+    :root {
+      --bg:      #0f172a;
+      --surface: #1e293b;
+      --border:  #334155;
+      --accent:  #6c63ff;
+      --text:    #e2e8f0;
+      --muted:   #94a3b8;
+      --danger:  #f87171;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      padding: 2rem 1rem;
+    }
+    .container { max-width: 760px; margin: 0 auto; }
+    header { margin-bottom: 2.5rem; }
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 52px; height: 52px;
+      background: linear-gradient(135deg, #6c63ff 0%, #a78bfa 100%);
+      border-radius: 14px;
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+    h1 { font-size: 2rem; font-weight: 700; }
+    .meta { color: var(--muted); font-size: 0.875rem; margin-top: 0.25rem; }
+    h2 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin: 2rem 0 0.6rem;
+      padding-bottom: 0.3rem;
+      border-bottom: 1px solid var(--border);
+    }
+    h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 1.2rem 0 0.4rem;
+    }
+    p  { margin-bottom: 0.8rem; }
+    ul { margin: 0.4rem 0 0.8rem 1.4rem; }
+    li { margin-bottom: 0.3rem; }
+    a  { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .highlight {
+      background: var(--surface);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+      padding: 0.8rem 1rem;
+      margin: 1rem 0;
+      font-size: 0.9rem;
+    }
+    .danger {
+      background: rgba(248,113,113,0.08);
+      border-left: 3px solid var(--danger);
+      border-radius: 0 8px 8px 0;
+      padding: 0.8rem 1rem;
+      margin: 1rem 0;
+      font-size: 0.9rem;
+      color: var(--danger);
+    }
+    footer {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.8rem;
+      text-align: center;
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg:      #f8fafc;
+        --surface: #f1f5f9;
+        --border:  #cbd5e1;
+        --accent:  #4f46e5;
+        --text:    #1e293b;
+        --muted:   #64748b;
+        --danger:  #dc2626;
+      }
+    }
   </style>
 </head>
 <body>
-<h1>Acceptable Use Policy</h1>
-<p class="meta"><strong>Argos — AI Personal Assistant</strong><br>Effective date: 26 May 2026</p>
-<p>This Acceptable Use Policy ("AUP") describes what you may and may not do with Argos. It applies alongside our <a href="terms.html">Terms of Service</a>. By using Argos, you agree to this policy.</p>
-<hr>
-<h2>Permitted use</h2>
-<p>Argos is designed for personal productivity — managing your communications, calendar, and information using AI assistance. You may use Argos for any lawful personal purpose consistent with these Terms.</p>
-<h2>Prohibited activities</h2>
-<h3>1. Harmful or illegal content</h3>
-<p>You must not use Argos to generate, distribute, or facilitate:</p>
-<ul>
-  <li>Content that is illegal under applicable law</li>
-  <li>Content that is defamatory, abusive, threatening, or harassing toward any person</li>
-  <li>Content that sexualises or exploits minors in any way</li>
-  <li>Incitement to violence, terrorism, or hate speech targeting individuals or groups based on protected characteristics</li>
-</ul>
-<h3>2. Misuse of AI capabilities</h3>
-<p>You must not:</p>
-<ul>
-  <li>Attempt to manipulate, jailbreak, or circumvent Argos's safety guidelines or those of the underlying AI model</li>
-  <li>Use Argos to systematically generate spam, phishing messages, disinformation, or misleading content at scale</li>
-  <li>Impersonate another real person or organisation in a way that is deceptive or harmful</li>
-  <li>Use Argos to generate content intended to manipulate elections or public opinion through coordinated deception</li>
-</ul>
-<h3>3. Unauthorised data access</h3>
-<p>You must not use Argos to:</p>
-<ul>
-  <li>Access Gmail or Google Calendar accounts that you do not own or have explicit authorisation to access</li>
-  <li>Collect, harvest, or exfiltrate data from third-party services in a manner that violates their terms of service</li>
-  <li>Conduct surveillance on another person without their knowledge and consent</li>
-</ul>
-<h3>4. Service integrity</h3>
-<p>You must not:</p>
-<ul>
-  <li>Attempt to reverse-engineer, decompile, disassemble, or tamper with Argos or its underlying infrastructure</li>
-  <li>Use automated tools to interact with Argos in a way that places unreasonable load on our systems or Anthropic's API</li>
-  <li>Attempt to access the app's backend, database, or Cloud Functions in an unauthorised manner</li>
-  <li>Resell, sublicense, or commercially exploit Argos or its output without our written permission</li>
-</ul>
-<hr>
-<h2>Reporting abuse</h2>
-<p>If you become aware of misuse of Argos, please report it to: <a href="mailto:argosjb.ai@gmail.com">argosjb.ai@gmail.com</a></p>
-<h2>Consequences of violation</h2>
-<p>Violation of this AUP may result in immediate suspension or termination of your access to Argos, and reporting to relevant authorities where required by law. We reserve the right to determine, at our sole discretion, whether a violation has occurred.</p>
-<h2>Contact</h2>
-<p>For questions about this policy: <a href="mailto:argosjb.ai@gmail.com">argosjb.ai@gmail.com</a></p>
-<hr>
-<footer>© 2026 Thomas Dantz. All rights reserved.</footer>
+<div class="container">
+
+  <header>
+    <div class="logo">A</div>
+    <h1>Acceptable Use Policy</h1>
+    <p class="meta">Argos &nbsp;·&nbsp; Effective date: 26 May 2026</p>
+  </header>
+
+  <div class="highlight">
+    This policy describes what you may and may not do with Argos. It applies alongside our
+    <a href="https://argosjb-ai.github.io/argos/terms">Terms of Service</a>.
+    By using Argos, you agree to this policy.
+  </div>
+
+  <h2>Permitted Use</h2>
+  <p>Argos is designed for personal productivity — managing your communications, calendar, and
+  information using AI assistance. You may use Argos for any lawful personal purpose consistent
+  with these Terms.</p>
+
+  <h2>Prohibited Activities</h2>
+
+  <h3>1. Harmful or Illegal Content</h3>
+  <p>You must not use Argos to generate, distribute, or facilitate:</p>
+  <ul>
+    <li>Content that is illegal under applicable law</li>
+    <li>Content that is defamatory, abusive, threatening, or harassing toward any person</li>
+    <li>Content that sexualises or exploits minors in any way</li>
+    <li>Incitement to violence, terrorism, or hate speech targeting individuals or groups based on
+        protected characteristics (race, religion, gender, sexual orientation, etc.)</li>
+  </ul>
+
+  <h3>2. Misuse of AI Capabilities</h3>
+  <p>You must not:</p>
+  <ul>
+    <li>Attempt to manipulate, jailbreak, or circumvent Argos's safety guidelines or those of the
+        underlying AI model (Anthropic's Claude)</li>
+    <li>Use Argos to systematically generate spam, phishing messages, disinformation, or misleading
+        content at scale</li>
+    <li>Impersonate another real person or organisation in a way that is deceptive or harmful</li>
+    <li>Use Argos to generate content intended to manipulate elections or public opinion through
+        coordinated deception</li>
+  </ul>
+
+  <h3>3. Unauthorised Data Access</h3>
+  <p>You must not use Argos to:</p>
+  <ul>
+    <li>Access Gmail or Google Calendar accounts that you do not own or have explicit authorisation
+        to access</li>
+    <li>Collect, harvest, or exfiltrate data from third-party services in a manner that violates
+        their terms of service</li>
+    <li>Conduct surveillance on another person without their knowledge and consent</li>
+  </ul>
+
+  <h3>4. Service Integrity</h3>
+  <p>You must not:</p>
+  <ul>
+    <li>Attempt to reverse-engineer, decompile, disassemble, or tamper with Argos or its underlying
+        infrastructure</li>
+    <li>Use automated tools to interact with Argos in a way that places unreasonable load on our
+        systems or Anthropic's API</li>
+    <li>Attempt to access the app's backend, Firestore database, or Cloud Functions in an
+        unauthorised manner</li>
+    <li>Resell, sublicense, or commercially exploit Argos or its output without our written
+        permission</li>
+  </ul>
+
+  <h2>Reporting Abuse</h2>
+  <p>If you become aware of misuse of Argos, please report it to:
+    <a href="mailto:argosjb.ai@gmail.com">argosjb.ai@gmail.com</a>
+  </p>
+
+  <h2>Consequences of Violation</h2>
+  <div class="danger">
+    Violation of this AUP may result in immediate suspension or termination of your access to Argos,
+    and reporting to relevant authorities where required by law. We reserve the right to determine,
+    at our sole discretion, whether a violation has occurred.
+  </div>
+
+  <h2>Contact</h2>
+  <p>For questions about this policy:
+    <a href="mailto:argosjb.ai@gmail.com">argosjb.ai@gmail.com</a>
+  </p>
+
+  <footer>
+    &copy; 2026 Tom Dantz. All rights reserved. &nbsp;·&nbsp;
+    <a href="https://argosjb-ai.github.io/argos/privacy">Privacy Policy</a> &nbsp;·&nbsp;
+    <a href="https://argosjb-ai.github.io/argos/terms">Terms of Service</a>
+  </footer>
+
+</div>
 </body>
 </html>

@@ -1,78 +1,220 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Terms of Service — Argos</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Argos — Terms of Service</title>
   <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-           max-width: 720px; margin: 40px auto; padding: 0 24px;
-           color: #1a1a1a; line-height: 1.7; }
-    h1 { font-size: 1.8rem; margin-bottom: 4px; }
-    h2 { font-size: 1.1rem; margin-top: 2rem; color: #333; }
-    .meta { color: #666; font-size: 0.9rem; margin-bottom: 2rem; }
-    hr { border: none; border-top: 1px solid #e0e0e0; margin: 2rem 0; }
-    footer { color: #999; font-size: 0.8rem; margin-top: 3rem; }
-    a { color: #5c4de8; }
+    :root {
+      --bg:      #0f172a;
+      --surface: #1e293b;
+      --border:  #334155;
+      --accent:  #6c63ff;
+      --text:    #e2e8f0;
+      --muted:   #94a3b8;
+      --danger:  #f87171;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      padding: 2rem 1rem;
+    }
+    .container { max-width: 760px; margin: 0 auto; }
+    header { margin-bottom: 2.5rem; }
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 52px; height: 52px;
+      background: linear-gradient(135deg, #6c63ff 0%, #a78bfa 100%);
+      border-radius: 14px;
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+    h1 { font-size: 2rem; font-weight: 700; }
+    .meta { color: var(--muted); font-size: 0.875rem; margin-top: 0.25rem; }
+    h2 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin: 2rem 0 0.6rem;
+      padding-bottom: 0.3rem;
+      border-bottom: 1px solid var(--border);
+    }
+    p  { margin-bottom: 0.8rem; }
+    ul { margin: 0.4rem 0 0.8rem 1.4rem; }
+    li { margin-bottom: 0.3rem; }
+    a  { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 1.2rem 0 0.4rem;
+    }
+    .highlight {
+      background: var(--surface);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+      padding: 0.8rem 1rem;
+      margin: 1rem 0;
+      font-size: 0.9rem;
+    }
+    .danger {
+      background: rgba(248,113,113,0.08);
+      border-left: 3px solid var(--danger);
+      border-radius: 0 8px 8px 0;
+      padding: 0.8rem 1rem;
+      margin: 1rem 0;
+      font-size: 0.9rem;
+      color: var(--danger);
+    }
+    footer {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.8rem;
+      text-align: center;
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg:      #f8fafc;
+        --surface: #f1f5f9;
+        --border:  #cbd5e1;
+        --accent:  #4f46e5;
+        --text:    #1e293b;
+        --muted:   #64748b;
+        --danger:  #dc2626;
+      }
+    }
   </style>
 </head>
 <body>
-<h1>Terms of Service</h1>
-<p class="meta"><strong>Argos — AI Personal Assistant</strong><br>Effective date: 26 May 2026</p>
-<p>These Terms of Service ("Terms") govern your use of Argos ("the app"), developed and operated by Thomas Dantz ("we", "us", "our"). By installing or using Argos, you agree to these Terms. If you do not agree, please uninstall the app.</p>
-<hr>
-<h2>1. What Argos is</h2>
-<p>Argos is a personal AI assistant app that uses Anthropic's Claude AI model to help you manage messages, emails, calendar events, and information. It is provided for personal, non-commercial use.</p>
-<h2>2. AI limitations and no professional advice</h2>
-<p>Argos is powered by AI that can make mistakes, hallucinate facts, and misunderstand context. You acknowledge and agree that:</p>
-<ul>
-  <li>You will not rely on Argos for medical, legal, financial, psychological, or safety-critical decisions.</li>
-  <li>Argos's responses are not a substitute for professional advice of any kind.</li>
-  <li>You are solely responsible for verifying any information before acting on it.</li>
-  <li>AI-generated calendar entries, email drafts, and summaries may contain errors and must be reviewed before use.</li>
-</ul>
-<h2>3. Your data and privacy</h2>
-<p>By using Argos, you agree that your data is processed as described in our <a href="privacy.html">Privacy Policy</a>. In summary:</p>
-<ul>
-  <li>Your chat history and memories are stored locally on your device in an encrypted database.</li>
-  <li>If you enable Device Sync, this data is backed up to your Google account via Firebase.</li>
-  <li>When Argos generates a response, your message and relevant context are sent to Anthropic's servers. Anthropic retains this data for up to 30 days for safety monitoring and then deletes it. Anthropic does not use API data to train its models.</li>
-  <li>You retain ownership of your data at all times.</li>
-  <li>You can delete all your data at any time from Settings → Delete All Data.</li>
-</ul>
-<h2>4. Gmail and Google Calendar access</h2>
-<p>If you connect a Google account, Argos will access your emails and calendar events to generate assistant responses. By connecting a Google account, you confirm that you are authorised to grant this access. You agree that:</p>
-<ul>
-  <li>Email and calendar data is accessed on demand and is not permanently stored by us.</li>
-  <li>This data is transmitted to Anthropic's servers solely to generate your reply.</li>
-  <li>You will not connect accounts belonging to others without their explicit permission.</li>
-</ul>
-<h2>5. Acceptable use</h2>
-<p>You agree to use Argos only in accordance with our <a href="aup.html">Acceptable Use Policy</a>. We reserve the right to suspend or restrict access to Argos if we determine, at our sole discretion, that you are violating these Terms or the Acceptable Use Policy.</p>
-<h2>6. Intellectual property</h2>
-<p>All rights, title, and interest in Argos — including the app, its design, code, and brand — are owned by Tom Dantz. "Argos" and associated branding are protected under applicable copyright law.</p>
-<p>You are granted a limited, non-exclusive, non-transferable licence to use Argos on your personal device solely for your personal, non-commercial use. This licence does not permit you to copy, modify, distribute, sell, or reverse-engineer the app.</p>
-<h2>7. Third-party services</h2>
-<p>Argos uses the following third-party services, each governed by their own terms:</p>
-<ul>
-  <li><strong>Anthropic</strong> — AI processing (<a href="https://www.anthropic.com/legal/consumer-terms">Terms</a>, <a href="https://www.anthropic.com/legal/privacy">Privacy</a>)</li>
-  <li><strong>Google Firebase</strong> — cloud sync and authentication (<a href="https://firebase.google.com/terms">Terms</a>, <a href="https://firebase.google.com/support/privacy">Privacy</a>)</li>
-  <li><strong>Google APIs</strong> — Gmail and Calendar access (<a href="https://developers.google.com/terms">Terms</a>)</li>
-</ul>
-<p>We are not responsible for the practices of these third-party services.</p>
-<h2>8. Availability and changes</h2>
-<p>We do not guarantee that Argos will be available at all times or without interruption. We may update, modify, or discontinue features at any time without notice. We will communicate significant changes through in-app notifications where possible.</p>
-<h2>9. No warranty</h2>
-<p>Argos is provided <strong>"as is"</strong> without warranty of any kind, express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, or non-infringement.</p>
-<h2>10. Limitation of liability</h2>
-<p>To the fullest extent permitted by applicable law, Tom Dantz shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of or inability to use Argos. In any case, our total liability to you shall not exceed CHF 100.</p>
-<h2>11. Changes to these Terms</h2>
-<p>We may update these Terms from time to time. The "Effective date" at the top will reflect the date of the latest revision. Continued use of Argos after changes are posted constitutes your acceptance of the revised Terms.</p>
-<h2>12. Governing law and jurisdiction</h2>
-<p>These Terms are governed by the laws of Switzerland. Any dispute shall be subject to the exclusive jurisdiction of the competent courts of Switzerland.</p>
-<h2>13. Contact</h2>
-<p>For questions about these Terms: <a href="mailto:argosjb.ai@gmail.com">argosjb.ai@gmail.com</a></p>
-<hr>
-<footer>© 2026 Thomas Dantz. All rights reserved.</footer>
+<div class="container">
+
+  <header>
+    <div class="logo">A</div>
+    <h1>Terms of Service</h1>
+    <p class="meta">Argos &nbsp;·&nbsp; Effective date: 26 May 2026</p>
+  </header>
+
+  <div class="highlight">
+    These Terms govern your use of Argos. By installing or using Argos, you agree to these Terms.
+    If you do not agree, please uninstall the app.
+  </div>
+
+  <h2>1. What Argos Is</h2>
+  <p>
+    Argos is a personal AI assistant app that uses Anthropic's Claude AI model to help you manage
+    messages, emails, calendar events, and information. It is provided for personal, non-commercial use.
+  </p>
+
+  <h2>2. AI Limitations and No Professional Advice</h2>
+  <p>Argos is powered by AI that can make mistakes, hallucinate facts, and misunderstand context.
+  You acknowledge and agree that:</p>
+  <ul>
+    <li>You will not rely on Argos for medical, legal, financial, psychological, or safety-critical decisions.</li>
+    <li>Argos's responses are not a substitute for professional advice of any kind.</li>
+    <li>You are solely responsible for verifying any information before acting on it.</li>
+    <li>AI-generated calendar entries, email drafts, and summaries may contain errors and must be reviewed before use.</li>
+  </ul>
+
+  <h2>3. Your Data and Privacy</h2>
+  <p>By using Argos, you agree that your data is processed as described in our
+    <a href="https://argosjb-ai.github.io/argos/privacy">Privacy Policy</a>. In summary:</p>
+  <ul>
+    <li>Your chat history and memories are stored locally on your device.</li>
+    <li>If you enable Device Sync, this data is backed up to your Google account via Firebase.</li>
+    <li>When Argos generates a response, your message and relevant context are sent to Anthropic's servers.
+        Anthropic retains this data for up to 30 days for safety monitoring, then deletes it.
+        Anthropic does not use API data to train its models.</li>
+    <li>You retain ownership of your data at all times.</li>
+    <li>You can delete all your data at any time from Settings → Delete All Data.</li>
+  </ul>
+
+  <h2>4. Gmail and Google Calendar Access</h2>
+  <p>If you connect a Google account, Argos will access your emails and calendar events to generate
+  assistant responses. By connecting a Google account, you confirm that you are authorised to grant
+  this access. You agree that:</p>
+  <ul>
+    <li>Email and calendar data is accessed on demand and is not permanently stored by us.</li>
+    <li>This data is transmitted to Anthropic's servers solely to generate your reply.</li>
+    <li>You will not connect accounts belonging to others without their explicit permission.</li>
+  </ul>
+
+  <h2>5. Acceptable Use</h2>
+  <p>You agree to use Argos only in accordance with our
+    <a href="https://argosjb-ai.github.io/argos/aup">Acceptable Use Policy</a>.
+    We reserve the right to suspend or restrict access to Argos if we determine, at our sole
+    discretion, that you are violating these Terms or the Acceptable Use Policy.</p>
+
+  <h2>6. Intellectual Property</h2>
+  <p>All rights, title, and interest in Argos — including the app, its design, code, and brand —
+  are owned by Tom Dantz. "Argos" and associated branding are protected under applicable copyright law.</p>
+  <p>You are granted a limited, non-exclusive, non-transferable licence to use Argos on your personal
+  device solely for personal, non-commercial use. This licence does not permit you to copy, modify,
+  distribute, sell, or reverse-engineer the app.</p>
+
+  <h2>7. Third-Party Services</h2>
+  <p>Argos uses the following third-party services, each governed by their own terms:</p>
+  <ul>
+    <li><strong>Anthropic</strong> — AI processing
+      (<a href="https://www.anthropic.com/legal/consumer-terms" target="_blank">Terms</a>,
+       <a href="https://www.anthropic.com/legal/privacy" target="_blank">Privacy</a>)</li>
+    <li><strong>Google Firebase</strong> — cloud sync and authentication
+      (<a href="https://firebase.google.com/terms" target="_blank">Terms</a>,
+       <a href="https://firebase.google.com/support/privacy" target="_blank">Privacy</a>)</li>
+    <li><strong>Google APIs</strong> — Gmail and Calendar access
+      (<a href="https://developers.google.com/terms" target="_blank">Terms</a>)</li>
+  </ul>
+  <p>We are not responsible for the practices of these third-party services.</p>
+
+  <h2>8. Availability and Changes</h2>
+  <p>We do not guarantee that Argos will be available at all times or without interruption. We may
+  update, modify, or discontinue features at any time without notice. We will communicate significant
+  changes through in-app notifications where possible.</p>
+
+  <h2>9. No Warranty</h2>
+  <p>Argos is provided <strong>"as is"</strong> without warranty of any kind, express or implied,
+  including but not limited to warranties of merchantability, fitness for a particular purpose, or
+  non-infringement. We make no warranty that the app will be error-free, secure, or free of harmful
+  components.</p>
+
+  <h2>10. Limitation of Liability</h2>
+  <p>To the fullest extent permitted by applicable law, Tom Dantz shall not be liable for any indirect,
+  incidental, special, consequential, or punitive damages arising from your use of or inability to use
+  Argos, even if advised of the possibility of such damages. In any case, our total liability to you
+  shall not exceed CHF 100.</p>
+
+  <h2>11. Changes to These Terms</h2>
+  <p>We may update these Terms from time to time. The "Effective date" at the top will reflect the
+  date of the latest revision. Continued use of Argos after changes are posted constitutes your
+  acceptance of the revised Terms. For material changes, we will provide notice via the app where
+  possible.</p>
+
+  <h2>12. Governing Law and Jurisdiction</h2>
+  <p>These Terms are governed by the laws of Switzerland, without regard to conflict-of-law principles.
+  Any dispute arising from or relating to these Terms or your use of Argos shall be subject to the
+  exclusive jurisdiction of the competent courts of Switzerland.</p>
+
+  <h2>13. Contact</h2>
+  <p>For questions about these Terms, please contact us at:
+    <a href="mailto:argosjb.ai@gmail.com">argosjb.ai@gmail.com</a>
+  </p>
+
+  <footer>
+    &copy; 2026 Tom Dantz. All rights reserved. &nbsp;·&nbsp;
+    <a href="https://argosjb-ai.github.io/argos/privacy">Privacy Policy</a> &nbsp;·&nbsp;
+    <a href="https://argosjb-ai.github.io/argos/aup">Acceptable Use Policy</a>
+  </footer>
+
+</div>
 </body>
 </html>

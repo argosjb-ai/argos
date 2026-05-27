@@ -1,89 +1,269 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Privacy Policy — Argos</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Argos — Privacy Policy</title>
   <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-           max-width: 720px; margin: 40px auto; padding: 0 24px;
-           color: #1a1a1a; line-height: 1.7; }
-    h1 { font-size: 1.8rem; margin-bottom: 4px; }
-    h2 { font-size: 1.1rem; margin-top: 2rem; color: #333; }
-    .meta { color: #666; font-size: 0.9rem; margin-bottom: 2rem; }
-    hr { border: none; border-top: 1px solid #e0e0e0; margin: 2rem 0; }
-    footer { color: #999; font-size: 0.8rem; margin-top: 3rem; }
-    a { color: #5c4de8; }
-    .card { background: #f8f8f8; border-radius: 8px; padding: 16px 20px; margin: 12px 0; }
-    .card h3 { margin: 0 0 6px 0; font-size: 0.95rem; color: #333; }
-    .card p { margin: 0; font-size: 0.9rem; color: #555; }
+    :root {
+      --bg:      #0f172a;
+      --surface: #1e293b;
+      --border:  #334155;
+      --accent:  #6c63ff;
+      --text:    #e2e8f0;
+      --muted:   #94a3b8;
+      --danger:  #f87171;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      padding: 2rem 1rem;
+    }
+    .container { max-width: 760px; margin: 0 auto; }
+    header { margin-bottom: 2.5rem; }
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 52px; height: 52px;
+      background: linear-gradient(135deg, #6c63ff 0%, #a78bfa 100%);
+      border-radius: 14px;
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+    h1 { font-size: 2rem; font-weight: 700; }
+    .meta { color: var(--muted); font-size: 0.875rem; margin-top: 0.25rem; }
+    h2 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin: 2rem 0 0.6rem;
+      padding-bottom: 0.3rem;
+      border-bottom: 1px solid var(--border);
+    }
+    p  { margin-bottom: 0.8rem; }
+    ul { margin: 0.4rem 0 0.8rem 1.4rem; }
+    li { margin-bottom: 0.3rem; }
+    a  { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .highlight {
+      background: var(--surface);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+      padding: 0.8rem 1rem;
+      margin: 1rem 0;
+      font-size: 0.9rem;
+    }
+    .danger {
+      background: rgba(248,113,113,0.08);
+      border-left: 3px solid var(--danger);
+      border-radius: 0 8px 8px 0;
+      padding: 0.8rem 1rem;
+      margin: 1rem 0;
+      font-size: 0.9rem;
+      color: var(--danger);
+    }
+    footer {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.8rem;
+      text-align: center;
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg:      #f8fafc;
+        --surface: #f1f5f9;
+        --border:  #cbd5e1;
+        --accent:  #4f46e5;
+        --text:    #1e293b;
+        --muted:   #64748b;
+        --danger:  #dc2626;
+      }
+    }
   </style>
 </head>
 <body>
-<h1>Privacy Policy</h1>
-<p class="meta"><strong>Argos — AI Personal Assistant</strong><br>Effective date: 26 May 2026</p>
-<p>This Privacy Policy explains what data Argos collects, where it goes, and who can access it. We believe you have a right to know exactly what happens with your information — in plain language.</p>
-<hr>
+<div class="container">
 
-<h2>What we collect and where it goes</h2>
+  <header>
+    <div class="logo">A</div>
+    <h1>Privacy Policy</h1>
+    <p class="meta">Argos &nbsp;·&nbsp; Last updated: May 2026 (revised)</p>
+  </header>
 
-<div class="card">
-  <h3>📱 On your device</h3>
-  <p>Your chat history, memories, and assistant settings are stored in an AES-256 encrypted database on your phone. This data is only readable by Argos — no other app or person can access it.</p>
+  <div class="highlight">
+    Argos is a personal AI assistant app. We take your privacy seriously. This policy explains
+    exactly what data the app processes, where it goes, and how you can delete it at any time.
+  </div>
+
+  <!-- 1 -->
+  <h2>1. Who We Are</h2>
+  <p>
+    Argos is developed and operated by Thomas Dantz as a personal project.
+    If you have any questions about this policy, please contact us at:
+    <a href="mailto:argosjb.ai@gmail.com">argosjb.ai@gmail.com</a>
+  </p>
+
+  <!-- 2 -->
+  <h2>2. What Data the App Processes</h2>
+
+  <p><strong>Data stored locally on your device</strong></p>
+  <ul>
+    <li><strong>Assistant configurations</strong> — names, system prompts, and settings you create.</li>
+    <li><strong>Chat history</strong> — conversations between you and your assistants.</li>
+    <li><strong>Memories</strong> — notes your assistants accumulate about you to personalise responses.</li>
+    <li><strong>App preferences</strong> — theme, language, briefing times, notification settings.</li>
+    <li><strong>API usage counters</strong> — total input/output tokens, used only to estimate cost on your device.</li>
+  </ul>
+  <p>All of the above are stored in an encrypted local database on your device and are never shared with us.</p>
+
+  <p><strong>Data sent to third-party services when you use certain features</strong></p>
+  <ul>
+    <li>
+      <strong>Claude AI (Anthropic, Inc.)</strong> — When you send a message, your message, selected
+      chat history, and any data you've attached (email summaries, calendar events) are sent to
+      Anthropic's API to generate a response. Anthropic processes this data under their own
+      <a href="https://www.anthropic.com/legal/privacy" target="_blank">Privacy Policy</a>.
+      Anthropic does not use API data to train their models.
+    </li>
+    <li>
+      <strong>Gmail (Google LLC)</strong> — If you connect a Gmail account, the app reads email subjects
+      and bodies solely to summarise them for you via Claude. Email content is sent to Anthropic for
+      processing and is not stored on our servers.
+    </li>
+    <li>
+      <strong>Google Calendar (Google LLC)</strong> — If your assistants use calendar features, event
+      titles and dates are read and sent to Claude for scheduling assistance.
+    </li>
+    <li>
+      <strong>Firebase Firestore (Google LLC)</strong> — If you enable cross-device sync, your assistant
+      configurations, chat history, and memories are synced to a Firestore database accessible only
+      to your Google account. This data is subject to Google's
+      <a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a>.
+      We also store a per-user API call counter in Firestore (linked to your account email) solely
+      to prevent service abuse — this counter is not shared with any third party.
+    </li>
+    <li>
+      <strong>Firebase Analytics (Google LLC)</strong> — The app sends anonymous usage events
+      (such as "message sent", "assistant created", "briefing enabled") to Firebase Analytics
+      to help us understand how features are used. These events are associated with a user
+      identifier derived from your account email. No message content is included. You can opt out
+      of analytics by using the "Delete all my data" option in Settings, which also clears your
+      analytics identifier. Firebase Analytics is subject to Google's
+      <a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a>.
+    </li>
+  </ul>
+
+  <!-- 3 -->
+  <h2>3. Data We Do NOT Collect</h2>
+  <ul>
+    <li>We do <strong>not</strong> collect advertising identifiers or track you across apps.</li>
+    <li>We do <strong>not</strong> sell or share your data with advertisers or data brokers.</li>
+    <li>We do <strong>not</strong> store copies of your emails or calendar events on any server we control.</li>
+    <li>We do <strong>not</strong> include message content in any analytics events.</li>
+  </ul>
+
+  <!-- 4 -->
+  <h2>4. Permissions We Request</h2>
+  <ul>
+    <li>
+      <strong>Gmail (read-only)</strong> — To fetch email summaries for you. We never send emails
+      on your behalf without your explicit confirmation in the app.
+    </li>
+    <li>
+      <strong>Google Calendar (read-only)</strong> — To read upcoming events. We never create or
+      delete events without your explicit confirmation.
+    </li>
+    <li>
+      <strong>Google Sign-In</strong> — To authenticate you for optional Firestore sync.
+    </li>
+    <li>
+      <strong>Internet access</strong> — Required to contact the Claude API and Firebase.
+    </li>
+    <li>
+      <strong>Notifications</strong> — To deliver morning briefings, evening debriefs, and
+      proactive assistant check-ins at times you choose.
+    </li>
+    <li>
+      <strong>Schedule exact alarms</strong> — To trigger briefings at the precise times you set.
+    </li>
+  </ul>
+
+  <!-- 5 -->
+  <h2>5. Data Retention</h2>
+  <p>
+    Data stored locally on your device persists until you uninstall the app or use the
+    <strong>"Delete all my data"</strong> option in Settings.
+  </p>
+  <p>
+    If you use Firestore sync, your cloud data is deleted immediately when you trigger
+    "Delete all my data" — there is no waiting period.
+  </p>
+
+  <!-- 6 -->
+  <h2>6. Your Rights — Deleting Your Data</h2>
+  <div class="highlight">
+    You can delete all your data at any time: open Argos → Settings → scroll to "Danger Zone" →
+    tap <strong>"Delete all my data"</strong>. This will:
+    <ul style="margin-top:0.5rem">
+      <li>Permanently delete all assistants, chat history, and memories from your device.</li>
+      <li>Permanently delete your synced data from Firestore.</li>
+      <li>Revoke Gmail and Google account access.</li>
+      <li>Clear all app preferences and settings.</li>
+    </ul>
+    This action is irreversible.
+  </div>
+  <p>
+    You can also revoke Gmail or Google Calendar access at any time from your
+    <a href="https://myaccount.google.com/permissions" target="_blank">Google Account Permissions</a> page,
+    independent of using the in-app delete option.
+  </p>
+
+  <!-- 7 -->
+  <h2>7. Security</h2>
+  <p>
+    Your data is protected on-device by Android's secure storage: sensitive preferences
+    (such as account tokens and sync credentials) are stored in EncryptedSharedPreferences,
+    and the app disables Android's built-in backup mechanism to prevent data from being
+    copied via ADB or cloud backups.
+  </p>
+  <p>
+    Your Firestore data is protected by security rules that ensure only the authenticated Google
+    account that owns the data can read or write it.
+  </p>
+
+  <!-- 8 -->
+  <h2>8. Children</h2>
+  <p>
+    Argos is not directed at children under 13 (or 16 in the EU/EEA). We do not knowingly collect
+    personal data from children.
+  </p>
+
+  <!-- 9 -->
+  <h2>9. Changes to This Policy</h2>
+  <p>
+    If we make material changes to this policy, we will update the "Last updated" date at the top
+    of this page. We encourage you to review this page periodically.
+  </p>
+
+  <!-- 10 -->
+  <h2>10. Contact</h2>
+  <p>
+    For privacy-related questions or requests, please email:
+    <a href="mailto:argosjb.ai@gmail.com">argosjb.ai@gmail.com</a>
+  </p>
+
+  <footer>
+    &copy; 2026 Argos. All rights reserved.
+  </footer>
+
 </div>
-
-<div class="card">
-  <h3>☁️ Your private cloud backup</h3>
-  <p>If you enable Device Sync, the same data is backed up to your Google account via Firebase Firestore. Access is strictly limited to your Google account — Argos enforces this at the database security rule level.</p>
-</div>
-
-<div class="card">
-  <h3>🤖 AI processing (Anthropic)</h3>
-  <p>Every time Argos generates a reply — in chat, the morning briefing, or proactive notifications — your message, relevant memories, and any calendar or email context are sent to Anthropic's servers to produce the response.</p>
-  <p style="margin-top:8px;">Anthropic does not train its models on API data. Requests are retained for up to 30 days for safety monitoring, then deleted. Each call is independent — Anthropic does not build a profile of you. See <a href="https://www.anthropic.com/legal/privacy">Anthropic's Privacy Policy</a>.</p>
-</div>
-
-<div class="card">
-  <h3>📧 Gmail &amp; Google Calendar</h3>
-  <p>Email and calendar data is read on demand when an assistant needs it. Argos never stores your emails or calendar events — they exist only in the prompt sent to Anthropic for that specific reply.</p>
-</div>
-
-<div class="card">
-  <h3>📊 Anonymous analytics</h3>
-  <p>Argos logs anonymous usage events (which features are used, token counts, crash reports) via Firebase Analytics to help improve the app. No message content, email content, or personal data is included in analytics.</p>
-</div>
-
-<hr>
-<h2>Your rights</h2>
-<ul>
-  <li><strong>Access:</strong> All your data is visible to you inside the app.</li>
-  <li><strong>Deletion:</strong> You can delete everything — locally and from the cloud — at any time via Settings → Delete All Data.</li>
-  <li><strong>Portability:</strong> Your chat history and memories are stored in standard formats and can be reviewed inside the app.</li>
-</ul>
-
-<h2>Data we never collect</h2>
-<ul>
-  <li>We never sell your data to third parties.</li>
-  <li>We never store your emails or calendar events on our servers.</li>
-  <li>We never include personal content in analytics.</li>
-  <li>We never share your data with advertisers.</li>
-</ul>
-
-<h2>Third-party services</h2>
-<p>Argos uses the following services, each with their own privacy policies:</p>
-<ul>
-  <li><a href="https://www.anthropic.com/legal/privacy">Anthropic Privacy Policy</a> — AI processing</li>
-  <li><a href="https://firebase.google.com/support/privacy">Google Firebase Privacy Policy</a> — cloud sync, analytics, crash reporting</li>
-  <li><a href="https://policies.google.com/privacy">Google Privacy Policy</a> — Gmail and Calendar access</li>
-</ul>
-
-<h2>Changes to this policy</h2>
-<p>We may update this policy from time to time. The effective date at the top will reflect the latest revision. Continued use of Argos after changes are posted constitutes acceptance.</p>
-
-<h2>Contact</h2>
-<p>Questions about your privacy: <a href="mailto:argosjb.ai@gmail.com">argosjb.ai@gmail.com</a></p>
-
-<hr>
-<footer>© 2026 Thomas Dantz. All rights reserved.</footer>
 </body>
 </html>

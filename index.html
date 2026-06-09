@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Argos — Your Personal AI Assistant Hub</title>
+  <link rel="icon" type="image/png" href="argos_icon.png" />
+  <style>
+    :root {
+      --bg:      #0f172a;
+      --surface: #1e293b;
+      --border:  #334155;
+      --accent:  #6c63ff;
+      --accent2: #a78bfa;
+      --text:    #e2e8f0;
+      --muted:   #94a3b8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* ── Nav ───────────────────────────────────────────────────── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 2rem;
+      border-bottom: 1px solid var(--border);
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 0.75rem; }
+    .nav-logo img { width: 36px; height: 36px; border-radius: 9px; }
+    .nav-name { font-weight: 700; font-size: 1.1rem; }
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; align-items: center; }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.15s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-links .nav-cta {
+      background: var(--accent);
+      color: #fff !important;
+      padding: 0.4rem 1rem;
+      border-radius: 8px;
+      font-weight: 600;
+    }
+    .nav-links .nav-cta:hover { background: var(--accent2); }
+
+    /* ── Hero ───────────────────────────────────────────────────── */
+    .hero {
+      max-width: 760px;
+      margin: 5rem auto 4rem;
+      padding: 0 1.5rem;
+      text-align: center;
+    }
+    .hero-icon {
+      width: 88px; height: 88px;
+      border-radius: 22px;
+      margin-bottom: 1.75rem;
+      box-shadow: 0 8px 32px rgba(108,99,255,0.35);
+    }
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+      background: linear-gradient(135deg, #e2e8f0 0%, #a78bfa 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--muted);
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    /* ── Phone showcase ─────────────────────────────────────────── */
+    .phones {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 2rem;
+      padding: 4rem 1.5rem 5rem;
+      overflow: hidden;
+    }
+    .phone-wrap { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+    .phone-label { font-size: 0.78rem; color: var(--muted); letter-spacing: 0.04em; text-transform: uppercase; }
+
+    .phone {
+      width: 200px;
+      height: 400px;
+      background: #000;
+      border-radius: 32px;
+      border: 5px solid #1e293b;
+      box-shadow:
+        0 0 0 1px #334155,
+        0 24px 60px rgba(0,0,0,0.6),
+        0 8px 20px rgba(108,99,255,0.15);
+      overflow: hidden;
+      position: relative;
+      flex-shrink: 0;
+    }
+    /* Dynamic island */
+    .phone::before {
+      content: '';
+      position: absolute;
+      top: 8px; left: 50%;
+      transform: translateX(-50%);
+      width: 56px; height: 14px;
+      background: #000;
+      border-radius: 999px;
+      z-index: 10;
+    }
+    .phone-screen {
+      width: 100%; height: 100%;
+      background: #0a0f1e;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Tilt side phones */
+    .phone-wrap.left  .phone { transform: rotate(-4deg) translateY(20px); }
+    .phone-wrap.right .phone { transform: rotate(4deg)  translateY(20px); }
+    .phone-wrap.center .phone {
+      width: 220px; height: 440px;
+      box-shadow:
+        0 0 0 1px #334155,
+        0 32px 80px rgba(0,0,0,0.7),
+        0 8px 32px rgba(108,99,255,0.25);
+    }
+
+    /* ── Phone screen 1: Hub ── */
+    .screen-hub { padding: 28px 12px 12px; }
+    .hub-header {
+      font-size: 0.6rem;
+      font-weight: 700;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 10px;
+      margin-top: 4px;
+    }
+    .hub-card {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      background: #1a2235;
+      border-radius: 10px;
+      padding: 8px 10px;
+      margin-bottom: 6px;
+      border: 1px solid #2a3550;
+    }
+    .hub-avatar {
+      width: 32px; height: 32px;
+      border-radius: 9px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .hub-info { flex: 1; min-width: 0; }
+    .hub-name { font-size: 0.6rem; font-weight: 700; color: #e2e8f0; }
+    .hub-desc { font-size: 0.5rem; color: #64748b; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .hub-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #6c63ff;
+      flex-shrink: 0;
+    }
+
+    /* ── Phone screen 2: Chat ── */
+    .screen-chat { padding: 28px 0 0; display: flex; flex-direction: column; height: 100%; }
+    .chat-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px 10px;
+      border-bottom: 1px solid #1e293b;
+    }
+    .chat-avatar {
+      width: 26px; height: 26px;
+      border-radius: 7px;
+      background: linear-gradient(135deg,#6c63ff,#a78bfa);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.75rem;
+    }
+    .chat-name { font-size: 0.6rem; font-weight: 700; color: #e2e8f0; }
+    .chat-messages { flex: 1; padding: 10px 10px 0; display: flex; flex-direction: column; gap: 7px; overflow: hidden; }
+    .bubble {
+      max-width: 80%;
+      padding: 6px 8px;
+      border-radius: 10px;
+      font-size: 0.5rem;
+      line-height: 1.5;
+    }
+    .bubble.user {
+      background: #6c63ff;
+      color: #fff;
+      align-self: flex-end;
+      border-bottom-right-radius: 3px;
+    }
+    .bubble.assistant {
+      background: #1a2235;
+      color: #cbd5e1;
+      align-self: flex-start;
+      border-bottom-left-radius: 3px;
+      border: 1px solid #2a3550;
+    }
+    .bubble strong { color: #a78bfa; font-size: 0.52rem; }
+    .chat-input {
+      margin: 8px 10px 10px;
+      background: #1a2235;
+      border: 1px solid #2a3550;
+      border-radius: 8px;
+      padding: 6px 8px;
+      font-size: 0.48rem;
+      color: #475569;
+    }
+
+    /* ── Phone screen 3: Briefing ── */
+    .screen-brief { padding: 28px 12px 12px; }
+    .brief-time { font-size: 0.5rem; color: #475569; margin-bottom: 6px; margin-top: 4px; }
+    .brief-title { font-size: 0.65rem; font-weight: 700; color: #e2e8f0; margin-bottom: 10px; }
+    .brief-section { margin-bottom: 8px; }
+    .brief-section-title { font-size: 0.52rem; font-weight: 700; color: #a78bfa; margin-bottom: 3px; }
+    .brief-item {
+      font-size: 0.47rem;
+      color: #94a3b8;
+      line-height: 1.5;
+      padding-left: 6px;
+      border-left: 2px solid #2a3550;
+      margin-bottom: 2px;
+    }
+
+    /* ── Features ───────────────────────────────────────────────── */
+    .section-label {
+      text-align: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent2);
+      margin-bottom: 0.75rem;
+    }
+    .section-title {
+      text-align: center;
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 0.75rem;
+    }
+    .section-sub {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 2.5rem;
+    }
+    .features {
+      max-width: 1000px;
+      margin: 0 auto 6rem;
+      padding: 0 1.5rem;
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.5rem;
+    }
+    .card-icon { font-size: 1.8rem; margin-bottom: 0.75rem; }
+    .card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .card p { font-size: 0.875rem; color: var(--muted); line-height: 1.6; }
+
+    /* ── Pricing ────────────────────────────────────────────────── */
+    .pricing {
+      max-width: 800px;
+      margin: 0 auto 6rem;
+      padding: 0 1.5rem;
+    }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+    .pricing-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+    }
+    .pricing-card.featured {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px var(--accent), 0 8px 32px rgba(108,99,255,0.2);
+      position: relative;
+    }
+    .pricing-badge {
+      position: absolute;
+      top: -12px; left: 50%;
+      transform: translateX(-50%);
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.2rem 0.75rem;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+    .pricing-tier { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 0.5rem; }
+    .pricing-price { font-size: 2.5rem; font-weight: 800; line-height: 1; margin-bottom: 0.25rem; }
+    .pricing-price span { font-size: 1rem; font-weight: 400; color: var(--muted); }
+    .pricing-desc { font-size: 0.85rem; color: var(--muted); margin-bottom: 1.5rem; }
+    .pricing-features { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .pricing-features li { font-size: 0.875rem; display: flex; align-items: flex-start; gap: 0.5rem; }
+    .pricing-features li::before { content: '✓'; color: var(--accent2); font-weight: 700; flex-shrink: 0; }
+    .pricing-features li.muted { color: var(--muted); }
+    .pricing-features li.muted::before { content: '○'; color: var(--border); }
+    .pricing-soon {
+      display: inline-block;
+      font-size: 0.65rem;
+      background: rgba(167,139,250,0.15);
+      color: var(--accent2);
+      border-radius: 999px;
+      padding: 0.1rem 0.5rem;
+      margin-left: 0.4rem;
+      font-weight: 600;
+    }
+
+    /* ── Privacy strip ───────────────────────────────────────────── */
+    .privacy-strip {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .privacy-strip h2 { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.75rem; }
+    .privacy-strip p { color: var(--muted); font-size: 0.9rem; max-width: 560px; margin: 0 auto 1.25rem; }
+    .privacy-links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
+    .privacy-links a { color: var(--accent2); text-decoration: none; font-size: 0.875rem; font-weight: 600; }
+    .privacy-links a:hover { text-decoration: underline; }
+
+    /* ── Footer ─────────────────────────────────────────────────── */
+    footer {
+      max-width: 760px;
+      margin: 0 auto 3rem;
+      padding: 1.5rem 1.5rem 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.8rem;
+      border-top: 1px solid var(--border);
+    }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--text); }
+
+    /* ── Light mode ─────────────────────────────────────────────── */
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg:      #f8fafc;
+        --surface: #f1f5f9;
+        --border:  #cbd5e1;
+        --accent:  #4f46e5;
+        --accent2: #7c3aed;
+        --text:    #1e293b;
+        --muted:   #64748b;
+      }
+      .hero h1 {
+        background: linear-gradient(135deg, #1e293b 0%, #7c3aed 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .phone { border-color: #334155; }
+    }
+
+    /* ── Responsive ─────────────────────────────────────────────── */
+    @media (max-width: 700px) {
+      .hero h1 { font-size: 2rem; }
+      nav { padding: 1rem; }
+      .nav-links { gap: 0.75rem; }
+      .phone-wrap.left, .phone-wrap.right { display: none; }
+      .pricing-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Nav ── -->
+<nav>
+  <div class="nav-logo">
+    <img src="argos_icon.png" alt="Argos icon" />
+    <span class="nav-name">Argos</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="privacy.html">Privacy</a></li>
+    <li><a href="terms.html">Terms</a></li>
+    <li><a href="mailto:argosjb.ai@gmail.com" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ── Hero ── -->
+<section class="hero">
+  <img class="hero-icon" src="argos_icon.png" alt="Argos" />
+  <h1>Your personal AI assistant hub</h1>
+  <p>Create multiple AI assistants tailored to different areas of your life — each with its own personality, memory, and capabilities.</p>
+</section>
+
+<!-- ── Phone showcase ── -->
+<div class="phones">
+
+  <!-- Phone 1: Hub -->
+  <div class="phone-wrap left">
+    <div class="phone">
+      <div class="phone-screen">
+        <div class="screen-hub">
+          <div class="hub-header">My Assistants</div>
+          <div class="hub-card">
+            <div class="hub-avatar" style="background:linear-gradient(135deg,#6c63ff,#a78bfa)">👩</div>
+            <div class="hub-info">
+              <div class="hub-name">Julie</div>
+              <div class="hub-desc">Personal assistant</div>
+            </div>
+            <div class="hub-dot"></div>
+          </div>
+          <div class="hub-card">
+            <div class="hub-avatar" style="background:linear-gradient(135deg,#0ea5e9,#38bdf8)">✈️</div>
+            <div class="hub-info">
+              <div class="hub-name">Marco</div>
+              <div class="hub-desc">Travel planner</div>
+            </div>
+          </div>
+          <div class="hub-card">
+            <div class="hub-avatar" style="background:linear-gradient(135deg,#f59e0b,#fcd34d)">🎉</div>
+            <div class="hub-info">
+              <div class="hub-name">Birthdays</div>
+              <div class="hub-desc">Never miss a milestone</div>
+            </div>
+          </div>
+          <div class="hub-card">
+            <div class="hub-avatar" style="background:linear-gradient(135deg,#10b981,#34d399)">📰</div>
+            <div class="hub-info">
+              <div class="hub-name">Daily Digest</div>
+              <div class="hub-desc">News &amp; updates</div>
+            </div>
+            <div class="hub-dot" style="background:#10b981"></div>
+          </div>
+          <div class="hub-card">
+            <div class="hub-avatar" style="background:linear-gradient(135deg,#f43f5e,#fb7185)">🏖️</div>
+            <div class="hub-info">
+              <div class="hub-name">Weekend</div>
+              <div class="hub-desc">Activity planner</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="phone-label">Assistant Hub</div>
+  </div>
+
+  <!-- Phone 2: Chat (centre, larger) -->
+  <div class="phone-wrap center">
+    <div class="phone">
+      <div class="phone-screen">
+        <div class="screen-chat">
+          <div class="chat-header">
+            <div class="chat-avatar">👩</div>
+            <div class="chat-name">Julie</div>
+          </div>
+          <div class="chat-messages">
+            <div class="bubble user">What's on my calendar today?</div>
+            <div class="bubble assistant">
+              <strong>📅 Today</strong><br>
+              10:00 — Team standup (Zoom)<br>
+              13:30 — Lunch with Sarah<br>
+              17:00 — Doctor appointment<br><br>
+              Also, Tom sent you an invoice for CHF 450 — do you want me to flag it?
+            </div>
+            <div class="bubble user">Yes, add it to my to-do</div>
+            <div class="bubble assistant">Done! I've added "Review invoice from Tom — CHF 450" to your reminders for this evening. 👍</div>
+          </div>
+          <div class="chat-input">Ask Julie anything…</div>
+        </div>
+      </div>
+    </div>
+    <div class="phone-label">Smart Chat</div>
+  </div>
+
+  <!-- Phone 3: Morning briefing -->
+  <div class="phone-wrap right">
+    <div class="phone">
+      <div class="phone-screen">
+        <div class="screen-brief">
+          <div class="brief-time">7:00 AM · Monday, June 9</div>
+          <div class="brief-title">Good morning, Tom ☀️</div>
+          <div class="brief-section">
+            <div class="brief-section-title">📅 CALENDAR</div>
+            <div class="brief-item">10:00 Team standup</div>
+            <div class="brief-item">13:30 Lunch with Sarah</div>
+          </div>
+          <div class="brief-section">
+            <div class="brief-section-title">🌤️ WEATHER</div>
+            <div class="brief-item">Zug · 22°C, sunny with clouds</div>
+          </div>
+          <div class="brief-section">
+            <div class="brief-section-title">🌍 NEWS</div>
+            <div class="brief-item">Swiss franc hits 3-month high vs euro</div>
+            <div class="brief-item">AI regulation bill advances in Bern</div>
+          </div>
+          <div class="brief-section">
+            <div class="brief-section-title">💡 FOLLOW-UP</div>
+            <div class="brief-item">Your flight to Lisbon is in 4 days — check-in opens tomorrow.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="phone-label">Morning Briefing</div>
+  </div>
+
+</div>
+
+<!-- ── Features ── -->
+<section class="features">
+  <div class="section-label">What Argos does</div>
+  <div class="section-title">Everything in one place</div>
+  <div class="section-sub">Six powerful features working together, quietly, every day.</div>
+  <div class="features-grid">
+    <div class="card">
+      <div class="card-icon">🤖</div>
+      <h3>Multiple Assistants</h3>
+      <p>Create specialised assistants for work, travel, health, finance, and more — each with their own focus, memory, and system prompt.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🌅</div>
+      <h3>Morning &amp; Evening Briefings</h3>
+      <p>Start and end your day with a personalised AI briefing — calendar overview, email highlights, weather, and news, at the time you choose.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🔔</div>
+      <h3>Proactive Notifications</h3>
+      <p>Assistants reach out when something matters — upcoming birthdays, travel reminders, weekend plans — without you having to ask.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📬</div>
+      <h3>Gmail Integration</h3>
+      <p>Connect your Gmail accounts and let your personal assistant surface emails that need your attention, automatically and securely.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📅</div>
+      <h3>Calendar Awareness</h3>
+      <p>Assistants can read your upcoming events and create calendar entries on your behalf — confirmed with a real tool call, never guessed.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🧠</div>
+      <h3>Long-term Memory</h3>
+      <p>Argos remembers what matters across conversations — preferences, family names, habits — and applies them automatically.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── Pricing ── -->
+<section class="pricing" id="pricing">
+  <div class="section-label">Pricing</div>
+  <div class="section-title">Simple and honest</div>
+  <div class="section-sub">Free during beta — no credit card, no catch.</div>
+  <div class="pricing-grid">
+
+    <div class="pricing-card featured">
+      <div class="pricing-badge">Current plan</div>
+      <div class="pricing-tier">Beta</div>
+      <div class="pricing-price">Free <span>/ forever during beta</span></div>
+      <div class="pricing-desc">Full access to every feature while we build and refine together.</div>
+      <ul class="pricing-features">
+        <li>Unlimited assistants</li>
+        <li>Morning &amp; evening briefings</li>
+        <li>Gmail &amp; Calendar integration</li>
+        <li>Long-term memory</li>
+        <li>Proactive notifications</li>
+        <li>Cross-device sync</li>
+      </ul>
+    </div>
+
+    <div class="pricing-card">
+      <div class="pricing-tier">Pro</div>
+      <div class="pricing-price">TBD <span>/ month</span></div>
+      <div class="pricing-desc">A paid plan is coming for power users. Beta users will get a special rate.</div>
+      <ul class="pricing-features">
+        <li>Everything in Beta</li>
+        <li>Priority AI responses <span class="pricing-soon">soon</span></li>
+        <li>Custom AI models <span class="pricing-soon">soon</span></li>
+        <li>Advanced analytics <span class="pricing-soon">soon</span></li>
+        <li class="muted">More coming based on your feedback</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── Privacy ── -->
+<div class="privacy-strip">
+  <h2>Built with privacy in mind</h2>
+  <p>Your data stays on your device. Argos never sells your information, never stores your emails on its own servers, and gives you a one-tap option to delete everything at any time.</p>
+  <div class="privacy-links">
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms of Service</a>
+    <a href="mailto:argosjb.ai@gmail.com">Contact us</a>
+  </div>
+</div>
+
+<footer>
+  &copy; 2026 Argos &nbsp;·&nbsp; Developed by Thomas Dantz &nbsp;·&nbsp;
+  <a href="mailto:argosjb.ai@gmail.com">argosjb.ai@gmail.com</a>
+</footer>
+
+</body>
+</html>

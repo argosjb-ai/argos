@@ -95,7 +95,7 @@
   <header>
     <div class="logo">A</div>
     <h1>Privacy Policy</h1>
-    <p class="meta">Argos &nbsp;·&nbsp; Last updated: May 2026 (revised)</p>
+    <p class="meta">Argos &nbsp;·&nbsp; Last updated: 10 June 2026</p>
   </header>
 
   <div class="highlight">
@@ -106,9 +106,14 @@
   <!-- 1 -->
   <h2>1. Who We Are</h2>
   <p>
-    Argos is developed and operated by Thomas Dantz as a personal project.
+    Argos is developed and operated by Tom Dantz as a personal project.
     If you have any questions about this policy, please contact us at:
     <a href="mailto:argosjb.ai@gmail.com">argosjb.ai@gmail.com</a>
+  </p>
+  <p>
+    This policy complies with the EU General Data Protection Regulation (<strong>GDPR</strong>)
+    and the Swiss Federal Act on Data Protection (<strong>nDSG</strong>). Tom Dantz acts as the
+    data controller for all personal data processed by Argos.
   </p>
 
   <!-- 2 -->
@@ -122,7 +127,13 @@
     <li><strong>App preferences</strong> — theme, language, briefing times, notification settings.</li>
     <li><strong>API usage counters</strong> — total input/output tokens, used only to estimate cost on your device.</li>
   </ul>
-  <p>All of the above are stored in an encrypted local database on your device and are never shared with us.</p>
+  <p>
+    All of the above are stored in a local database on your device. If you enable
+    <strong>cross-device sync</strong> (via Google Sign-In), your assistant configurations,
+    chat history, and memories are additionally stored in Firebase Firestore (Google's cloud
+    infrastructure) so they are accessible across your devices. See the Firestore section below
+    for full details of what this means for your privacy.
+  </p>
 
   <p><strong>Data sent to third-party services when you use certain features</strong></p>
   <ul>
@@ -143,12 +154,22 @@
       titles and dates are read and sent to Claude for scheduling assistance.
     </li>
     <li>
-      <strong>Firebase Firestore (Google LLC)</strong> — If you enable cross-device sync, your assistant
-      configurations, chat history, and memories are synced to a Firestore database accessible only
-      to your Google account. This data is subject to Google's
+      <strong>Firebase Firestore (Google LLC)</strong> — If you enable cross-device sync, the
+      following data is stored in Google's Firestore cloud database: your assistant configurations,
+      <strong>chat messages</strong>, memories, and app settings. This data is stored in
+      <strong>plaintext</strong> (not end-to-end encrypted) and is protected by Firestore security
+      rules that ensure only your authenticated Google account can read or write your own data.
+      This data is subject to Google's
       <a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a>.
       We also store a per-user API call counter in Firestore (linked to your account email) solely
-      to prevent service abuse — this counter is not shared with any third party.
+      to prevent service abuse — this counter is not shared with any third party.<br/><br/>
+      <strong>Developer access:</strong> As the developer and operator of Argos, Tom Dantz has
+      administrative access to the Firebase project and can technically view data stored in
+      Firestore via the Firebase console. We commit to never accessing individual user data except
+      when strictly necessary to investigate a reported security incident or critical bug, and only
+      with the minimum data required to resolve the issue. We do not browse, analyse, or use
+      individual chat content for any other purpose. If end-to-end encryption of cloud-synced data
+      is important to you, we recommend using the app in offline mode (without signing in).
     </li>
     <li>
       <strong>Firebase Analytics (Google LLC)</strong> — The app sends anonymous usage events
@@ -166,7 +187,7 @@
   <ul>
     <li>We do <strong>not</strong> collect advertising identifiers or track you across apps.</li>
     <li>We do <strong>not</strong> sell or share your data with advertisers or data brokers.</li>
-    <li>We do <strong>not</strong> store copies of your emails or calendar events on any server we control.</li>
+    <li>We do <strong>not</strong> store copies of your emails or calendar events on any server we control — email and calendar data is fetched live, passed to Claude for processing, and never persisted to Firestore.</li>
     <li>We do <strong>not</strong> include message content in any analytics events.</li>
   </ul>
 
@@ -174,8 +195,9 @@
   <h2>4. Permissions We Request</h2>
   <ul>
     <li>
-      <strong>Gmail (read-only)</strong> — To fetch email summaries for you. We never send emails
-      on your behalf without your explicit confirmation in the app.
+      <strong>Gmail (read &amp; send)</strong> — To fetch email summaries and to send or draft replies
+      on your behalf when you explicitly ask an assistant to do so. The app will never send an email
+      without a direct instruction from you in the chat.
     </li>
     <li>
       <strong>Google Calendar (read-only)</strong> — To read upcoming events. We never create or
